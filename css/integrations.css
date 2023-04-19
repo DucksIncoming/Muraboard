@@ -1,0 +1,21 @@
+.integrations-container {
+    width: 75vw;
+    height: auto;
+    display: inline-block;
+    position: absolute;
+    left: 12.5vw;
+    top: 30vh;
+    text-align: center;
+}
+
+.integration-button {
+    background-color: #ffffff10;
+    width: 30vh;
+    height: 30vh;
+    padding: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    border-radius: 7vh;
+    margin-bottom: 10px;
+}

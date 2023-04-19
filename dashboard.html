@@ -4,27 +4,64 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Muraboard</title>
-  <link href="global.css" rel="stylesheet" type="text/css" />
+  <title>Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="Assets/Icons/ico.png">
+  <link href="css/global.css" rel="stylesheet" type="text/css" />
+  <link href="css/dashboard.css" rel="stylesheet" type="text/css" />
 
   <div class="menu-button-container" id="menu-button-container">
       <img src="Assets/Images/navbar_icon.png" class="menu-button" id="menu-button">
   </div>
   <nav class="navbar" id="navbar">
+    <p class="nav-title">Muraboard</p>
     <button class="nav-button" id="home">Home</button>
     <button class="nav-button" id="dashboard">Dashboard</button>
-    <button class="nav-button" id="dashboard">Calendar</button>
-    <button class="nav-button" id="dashboard">About</button>
-    <button class="nav-button" id="dashboard">Help</button>
+    <button class="nav-button" id="calendar">Calendar</button>
+    <button class="nav-button" id="integrations">Integrations</button>
+    <button class="nav-button" id="about">About</button>
+    <button class="nav-button" id="help">Help</button>
   </nav>
 </head>
 
 <body>
     <div class="page-title-container">
         <p class="page-title">Muraboard</p>
-        <p class="page-subtitle">what tha scallop</p>
+        <p class="page-subtitle">Dashboard Page</p>
     </div>
-  <script src="global.js"></script>
+
+    <div class="info-container">
+      <div class="class-schedule-title">
+        <p>Today's Schedule</p>
+      </div>
+      <div class="class-schedule">
+        <div class="class-box">
+          <p class="class-title"><a class="class-period">1ST</a> College Composition </p>
+          <p class="class-teacher">Caity Gladstone</p>
+          <p class="class-room">Room 419</p>
+        </div>
+        <div class="class-box">
+          <p class="class-title"><a class="class-period">2O</a> AP Chemistry </p>
+          <p class="class-teacher">Pamela Hughes</p>
+          <p class="class-room">Room 422</p>
+        </div>
+        <div class="class-box">
+          <p class="class-title"><a class="class-period">3O</a> AP Chemistry </p>
+          <p class="class-teacher">Pamela Hughes</p>
+          <p class="class-room">Room 422</p>
+        </div>
+        <div class="class-box">
+          <p class="class-title"><a class="class-period">4O</a> AP Chemistry </p>
+          <p class="class-teacher">Pamela Hughes</p>
+          <p class="class-room">Room 422</p>
+        </div>
+        <div class="class-box">
+          <p class="class-title"><a class="class-period">3O</a> AP Chemistry </p>
+          <p class="class-teacher">Pamela Hughes</p>
+          <p class="class-room">Room 422</p>
+        </div>
+      </div>
+    </div>
+  <script src="js/global.js"></script>
 </body>
 
 </html>
