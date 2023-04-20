@@ -3,27 +3,40 @@
     position: absolute;
     left: 5vw;
     top: 30vh;
+    display: flex;
     height: 80vh;
 }
 
 .class-box {
     background-color: #1e1e1e;
-    width: 15em;
+    min-width: 15em;
+    width: 17vw;
     padding: 5px;
     padding-left: 15px;
     color: white;
+    position: relative;
     border-radius: 2em;
     margin-bottom: 10px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.class-box:hover {
+    background-color: #2e2e2e;
 }
 
 .class-schedule-title {
     background-color: #242424;
     font-weight: bold;
     font-size: 2em;
+    padding: 1vw;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
     text-align: center;
     position: absolute;
-    width: 9.5em;
-    height: 3em;
+    width: 20vw;
     left: 0;
     top: 0;
     z-index: 10;
@@ -33,13 +46,14 @@
     font-size: 1em;
     background-color: #383838;
     border-radius: 2em;
-    width: 17em;
-    padding-top: 10em;
+    width: 19.9vw;
     height: 60vh;
     overflow-y: scroll;
+    overflow-x: hidden;
     position: relative;
     top: 4em;
-    padding: 1em;
+    padding: 1vw;
+    padding-top: 3em;
 }
 
 .class-period {
@@ -50,6 +64,15 @@
     margin-top: 15px;
     font-size: 1.2em;
     margin-bottom: 0px;
+}
+
+.class-time {
+    position: absolute;
+    bottom: 0.5em;
+    font-size: 0.9em;
+    right: 1em;
+    text-align: right;
+    color: #c7c7c7;
 }
 
 .class-teacher {
@@ -64,4 +87,119 @@
     margin-bottom: 15px;
     font-size: 0.9em;
     color: #c7c7c7;
+}
+
+.reminders {
+    width: 60vw;
+    height: 64vh;
+    margin-left: 3vw;
+    margin-top: 6em;
+    background-color: #383838;
+    border-bottom-right-radius: 3vw;
+    border-bottom-left-radius: 3vw;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.reminders-title {
+    width: 56vw;
+    height: 3em;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    position: absolute;
+    z-index: 10;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    font-size: 2em;
+    font-weight: bold;
+    left: 25vw;
+    background-color: #1e1e1e;
+}
+
+.reminder-card {
+    background-color: white;
+    margin-left: 1vw;
+    margin-top: 1vw;
+    margin-right: 1vw;
+    padding: 0.5vw;
+    padding-left: 1.5vw;
+    border-radius: 1vw;
+    color: black;
+    position: relative;
+}
+
+.reminder-card-title {
+    font-size: 2vw;
+    font-weight: bold;
+    margin-top: 0;
+    max-width: 45vw;
+    margin-bottom: 0;
+}
+
+.reminder-card-tag {
+    background-color: greenyellow;
+    border-radius: 100vw;
+    width: 8vw;
+    margin-top: 1vh;
+    padding: 5px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.reminder-card-description {
+    font-style: italic;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.reminder-card-resource {
+    color: blue;
+    margin-top: 0;
+    margin-bottom: 1vh;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.reminders-add {
+    background-color: #fffff000;
+    border: 0;
+    outline: none;
+    width: 1vw;
+}
+
+.reminders-add > img {
+    width: 2vw;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+
+.reminder-card-edit {
+    width: 2vw;
+    cursor: pointer;
+}
+
+.reminder-card-check {
+    width: 2vw;
+    cursor: pointer;
+}
+
+.reminder-card-trash {
+    width: 2vw;
+    cursor: pointer;
+}
+
+.reminder-card-date {
+    position: absolute;
+    top: 2vh;
+    right: 2vw;
+    text-align: right;
+}
+
+.reminder-card-timeleft {
+    position: absolute;
+    top: 5vh;
+    right: 2vw;
+    text-align: right;
 }
