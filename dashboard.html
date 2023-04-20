@@ -24,6 +24,36 @@
 </head>
 
 <body>
+    <div class="new-reminder-box">
+      <p class="new-reminder-box-title">New Reminder</p>
+      <label for="new-reminder-name" class="new-reminder-box-input-label">Reminder Title</label>
+      <input type="text" id="new-reminder-name" class="new-reminder-box-input-oneline" />
+
+      <label for="new-reminder-description" class="new-reminder-box-input-label">Description</label>
+      <textarea id="new-reminder-description" class="new-reminder-box-input-multiline"></textarea>
+
+      <label for="new-reminder-datetime" class="new-reminder-box-input-label">Date and Time</label>
+      <input type="date" id="new-reminder-datetime" class="new-reminder-box-input-datetime" />
+
+      <label for="new-reminder-links" class="new-reminder-box-input-label">Resources/links</label>
+      <textarea id="new-reminder-links" class="new-reminder-box-input-multiline"></textarea>
+
+      <label for="new-reminder-tag" class="new-reminder-box-input-label">Tags</label>
+      <div class="new-reminder-selected-tags">
+        <div class="new-reminder-tag">AP Government</div>
+        <div class="new-reminder-tag">AP Government</div>
+        <div class="new-reminder-tag">AP Government</div>
+      </div>
+      <div class="new-reminder-tag-selector">
+        <a id="tag1">Tag 1</a>
+        <a id="tag1">Tag 1</a>
+        <a id="tag1">Tag 1</a>
+        <a id="tag1">Tag 1</a>
+        <a id="tag1">Tag 1</a>
+      </div>
+      <div class="new-reminder-addtag-button">Add Tags</div>
+    </div>
+    <div class="screen-darken"></div>
     <div class="page-title-container">
         <p class="page-title">Muraboard</p>
         <p class="page-subtitle">Dashboard Page</p>
@@ -61,7 +91,7 @@
       </div>
       <div class="reminders-title">
         <p>Reminders</p>
-        <button class="reminders-add"><img src="Assets/Images/add_icon.png">Create New Reminder</button>
+        <button class="reminders-add"><img src="Assets/Images/add_icon.png">New Reminder</button>
       </div>
       <div class="reminders">
         <div class="reminder-card">
