@@ -139,10 +139,17 @@
 .reminder-card-tag {
     background-color: greenyellow;
     border-radius: 100vw;
-    width: 8vw;
+    display: inline-block;
+    max-width: 8vw;
+    white-space: nowrap;
+    height: 1.5vw;
     margin-top: 1vh;
-    padding: 5px;
+    margin-right: 0.5vw;
+    padding: 1vw;
+    padding-top: 5px;
+    padding-bottom: 5px;
     overflow: hidden;
+    text-overflow: ellipsis;
     text-align: center;
 }
 
@@ -177,6 +184,11 @@
     padding: 0.75vw;
     font-size: 1.2vw;
     cursor: pointer;
+    transition-duration: 0.1s;
+}
+
+.reminders-add:hover {
+    background-color: #383838;
 }
 
 .reminders-add > img {
@@ -225,10 +237,12 @@
     left: 0;
     background-color: black;
     opacity: 0.7;
-    z-index: 255
+    z-index: 255;
+    visibility: hidden;
 }
 
 .new-reminder-box {
+    visibility: hidden;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -295,7 +309,8 @@
     overflow-y: scroll;
     margin-left: 50%;
     transform: translateX(-50%);
-    height: auto;
+    min-height: 2vh;
+    max-height: 6vh;
     flex-wrap: wrap;
     background-color: white;
     padding-bottom: 0.5vw;
@@ -315,6 +330,7 @@
     margin-left: 0.5vw;
     color: black;
     text-align: center;
+    position: relative;
 }
 
 .new-reminder-tag-selector {
@@ -326,7 +342,25 @@
     bottom: 5%;
     overflow-x: hidden;
     overflow-y: scroll;
+    visibility: hidden;
     background-color: white;
+}
+
+.new-reminder-cancel {
+    position: absolute;
+    top: 1vw;
+    left: 1vw;
+    font-size: 1.5vw;
+    opacity: 0.3;
+    background-color: #ffffff00;
+    border: 0;
+    outline: none;
+    color: white;
+    cursor: pointer;
+}
+
+.new-reminder-cancel:hover {
+    opacity: 0.5;
 }
 
 .new-reminder-tag-selector > a {
@@ -334,23 +368,73 @@
     width: 10vw;
     height: 4vh;
     background-color: #0d0d0d;
-    padding: 1.45vw;
+    padding: 1vw;
     cursor: pointer;
+}
+.new-reminder-tag-delete {
+    width: 1.2vw;
+    height: 1.2vw;
+    color: white;
+    padding-right: 0.9vw;
+    border-radius: 1vw;
+    background-color: #999999;
+    opacity: 0.6;
+    border: 0;
+    outline: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0.5vw;
+    cursor: pointer;
+}
+
+.new-reminder-tag-delete:hover {
+    opacity: 1.0;
+}
+
+.new-reminder-tag-indicator {
+    width: 0.5vw;
+    height: 0.5vw;
+    background-color: red;
+    border-radius: 100%;
+    margin-right: 0.5vw;
+    display: inline-block;
 }
 
 .new-reminder-addtag-button {
     background-color: #393939;
-    width: 10vw;
+    width: 7vw;
     text-align: center;
     padding-top: 1vh;
     height: 4.5vh;
     border-radius: 4vw;
     position: absolute;
-    left: 2vw;
+    left: 4vw;
     z-index: -1;
-    bottom: 6vh;
+    cursor: pointer;
+    bottom: 4vh;
 }
 
 .new-reminder-tag-selector > a:hover {
     background-color: #1e1e1e;
+}
+
+.new-reminder-create-button {
+    position: absolute;
+    bottom: 1.5vw;
+    right: 4vw;
+    background-color: #696969;
+    color: white;
+    outline: none;
+    border: 0;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 100%;
+    font-size: 2vw;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.new-reminder-create-button:hover {
+    opacity: 1.0;
 }
