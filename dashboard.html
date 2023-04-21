@@ -41,9 +41,6 @@
 
       <label for="new-reminder-selected-tags" class="new-reminder-box-input-label">Tags</label>
       <div class="new-reminder-selected-tags" id="new-reminder-selected-tags">
-        <div class="new-reminder-tag"><button class="new-reminder-tag-delete" onclick="return this.parentNode.remove();">X</button>AP Government</div>
-        <div class="new-reminder-tag"><button class="new-reminder-tag-delete" onclick="return this.parentNode.remove();">X</button>AP Government</div>
-        <div class="new-reminder-tag"><button class="new-reminder-tag-delete" onclick="return this.parentNode.remove();">X</button>AP Government</div>
       </div>
       <div class="new-reminder-tag-selector" id="new-reminder-tag-selector">
         <a id="tag1" onclick="selectNewReminderTag('tag1')"><span class="new-reminder-tag-indicator"></span>Tag 1</a>
@@ -99,14 +96,14 @@
         <div class="reminder-card">
           <div class="reminder-card-tag" style="background-color:yellowgreen">AP Government</div>
           <div class="reminder-card-tag" style="background-color:blue">Homework</div>
-          <p class="reminder-card-title">Chapter 13 quiz</p>
-          <p class="reminder-card-description">On p.318-327 in textbook.</p>
-          <p class="reminder-card-resource">https://www.apgovtextbook.com/textbook/</p>
-          <p class="reminder-card-date">Due Thurs, Mar 27</p>
-          <p class="reminder-card-timeleft">8 days</p>
-          <input type="image" src="Assets/Images/edit_icon.png" class="reminder-card-edit" alt="" />
-          <input type="image" src="Assets/Images/checkbox_icon.png" class="reminder-card-check" alt="" />
-          <input type="image" src="Assets/Images/trash_icon.png" class="reminder-card-trash" alt="" />
+          <p class="reminder-card-title" id="reminder-card-title">Chapter 13 quiz</p>
+          <p class="reminder-card-description" id="reminder-card-description">On p.318-327 in textbook.</p>
+          <p class="reminder-card-resource" id="reminder-card-resource">https://www.apgovtextbook.com/textbook/</p>
+          <p class="reminder-card-date" id="reminder-card-date">Due Thurs, Mar 27</p>
+          <p class="reminder-card-timeleft" id="reminder-card-timeleft">8 days</p>
+          <input type="image" src="Assets/Images/edit_icon.png" onclick="editReminder(this.parentNode)" class="reminder-card-edit" alt="" />
+          <input type="image" src="Assets/Images/checkbox_icon.png" onclick="markReminder(this.parentNode)" class="reminder-card-check" alt="" />
+          <input type="image" src="Assets/Images/trash_icon.png" onclick="return this.parentNode.remove();" class="reminder-card-trash" alt="" />
         </div>
       </div>
     </div>
