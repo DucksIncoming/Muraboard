@@ -1,0 +1,1 @@
+<div class="new-reminder-tag"><button class="new-reminder-tag-delete">X</button>[TAGNAME]</div>

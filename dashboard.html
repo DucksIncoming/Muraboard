@@ -24,9 +24,10 @@
 </head>
 
 <body>
-    <div class="new-reminder-box">
-      <p class="new-reminder-box-title">New Reminder</p>
-      <label for="new-reminder-name" class="new-reminder-box-input-label">Reminder Title</label>
+    <div class="new-reminder-box" id="new-reminder-box">
+      <button class="new-reminder-cancel" onclick="closeNewReminder()">X</button>
+      <p class="new-reminder-box-title" id="new-reminder-box-title">New Reminder</p>
+      <label for="new-reminder-name" class="new-reminder-box-input-label">Reminder Title<font color="red">*</font></label>
       <input type="text" id="new-reminder-name" class="new-reminder-box-input-oneline" />
 
       <label for="new-reminder-description" class="new-reminder-box-input-label">Description</label>
@@ -38,22 +39,23 @@
       <label for="new-reminder-links" class="new-reminder-box-input-label">Resources/links</label>
       <textarea id="new-reminder-links" class="new-reminder-box-input-multiline"></textarea>
 
-      <label for="new-reminder-tag" class="new-reminder-box-input-label">Tags</label>
-      <div class="new-reminder-selected-tags">
-        <div class="new-reminder-tag">AP Government</div>
-        <div class="new-reminder-tag">AP Government</div>
-        <div class="new-reminder-tag">AP Government</div>
+      <label for="new-reminder-selected-tags" class="new-reminder-box-input-label">Tags</label>
+      <div class="new-reminder-selected-tags" id="new-reminder-selected-tags">
+        <div class="new-reminder-tag"><button class="new-reminder-tag-delete" onclick="return this.parentNode.remove();">X</button>AP Government</div>
+        <div class="new-reminder-tag"><button class="new-reminder-tag-delete" onclick="return this.parentNode.remove();">X</button>AP Government</div>
+        <div class="new-reminder-tag"><button class="new-reminder-tag-delete" onclick="return this.parentNode.remove();">X</button>AP Government</div>
       </div>
-      <div class="new-reminder-tag-selector">
-        <a id="tag1">Tag 1</a>
-        <a id="tag1">Tag 1</a>
-        <a id="tag1">Tag 1</a>
-        <a id="tag1">Tag 1</a>
-        <a id="tag1">Tag 1</a>
+      <div class="new-reminder-tag-selector" id="new-reminder-tag-selector">
+        <a id="tag1" onclick="selectNewReminderTag('tag1')"><span class="new-reminder-tag-indicator"></span>Tag 1</a>
+        <a id="tag2" onclick="selectNewReminderTag('tag2')"><span class="new-reminder-tag-indicator"></span>Tag 2</a>
+        <a id="tag3" onclick="selectNewReminderTag('tag3')"><span class="new-reminder-tag-indicator"></span>Tag 3</a>
+        <a id="tag4" onclick="selectNewReminderTag('tag4')"><span class="new-reminder-tag-indicator"></span>Tag 4</a>
+        <a id="tag5" onclick="selectNewReminderTag('tag5')"><span class="new-reminder-tag-indicator"></span>Tag 5</a>
       </div>
-      <div class="new-reminder-addtag-button">Add Tags</div>
+      <div class="new-reminder-addtag-button" id="new-reminder-addtag-button">Add Tags</div>
+      <button class="new-reminder-create-button" id="new-reminder-create-button">+</button>
     </div>
-    <div class="screen-darken"></div>
+    <div class="screen-darken" id="screen-darken"></div>
     <div class="page-title-container">
         <p class="page-title">Muraboard</p>
         <p class="page-subtitle">Dashboard Page</p>
@@ -91,11 +93,12 @@
       </div>
       <div class="reminders-title">
         <p>Reminders</p>
-        <button class="reminders-add"><img src="Assets/Images/add_icon.png">New Reminder</button>
+        <button class="reminders-add" onclick="createNewReminder()"><img src="Assets/Images/add_icon.png">New Reminder</button>
       </div>
-      <div class="reminders">
+      <div class="reminders" id="reminders">
         <div class="reminder-card">
-          <div class="reminder-card-tag">AP Government</div>
+          <div class="reminder-card-tag" style="background-color:yellowgreen">AP Government</div>
+          <div class="reminder-card-tag" style="background-color:blue">Homework</div>
           <p class="reminder-card-title">Chapter 13 quiz</p>
           <p class="reminder-card-description">On p.318-327 in textbook.</p>
           <p class="reminder-card-resource">https://www.apgovtextbook.com/textbook/</p>
@@ -108,6 +111,7 @@
       </div>
     </div>
   <script src="js/global.js"></script>
+  <script src="js/dashboard.js"></script>
 </body>
 
 </html>

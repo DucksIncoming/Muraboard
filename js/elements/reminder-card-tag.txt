@@ -1,0 +1,1 @@
+<div class="reminder-card-tag" style="background-color:[COLOR]">[TAGNAME]</div>

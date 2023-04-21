@@ -1,0 +1,10 @@
+<div class="reminder-card">
+    <p class="reminder-card-title">[TITLE]</p>
+    <p class="reminder-card-description">[DESCRIPTION]</p>
+    <p class="reminder-card-resource">[RESOURCES]</p>
+    <p class="reminder-card-date">[DATE]</p>
+    <p class="reminder-card-timeleft">[REMAINING]</p>
+    <input type="image" src="Assets/Images/edit_icon.png" class="reminder-card-edit" alt="" />
+    <input type="image" src="Assets/Images/checkbox_icon.png" class="reminder-card-check" alt="" />
+    <input type="image" src="Assets/Images/trash_icon.png" class="reminder-card-trash" alt="" />
+</div>
