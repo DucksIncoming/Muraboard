@@ -154,13 +154,25 @@ function markReminder(reminder){
 
 function toggleWidgetDropdown(widget) {    
     if (widget.parentNode.parentNode.style.height == "0vh"){
-        widget.parentNode.parentNode.style.height = "40vh";
-        widget.parentNode.parentNode.style.marginBottom = "1vh";
+        widget.parentNode.parentNode.style.height = "80vh";
+        widget.parentNode.parentNode.style.marginBottom = "1%";
         widget.style.rotate = "0deg";
+
+        childr = widget.parentNode.parentNode.children
+        for (let i = 0; i < childr.length; i++){
+            childr[i].style.visibility = "visible";
+        }
     }
     else {
         widget.parentNode.parentNode.style.height = "0vh";
-        widget.parentNode.parentNode.style.marginBottom = "10vh";
+        widget.parentNode.parentNode.style.marginBottom = "10%";
         widget.style.rotate = "-90deg";
+
+        childr = widget.parentNode.parentNode.children
+        for (let i = 0; i < childr.length; i++){
+            if (childr[i].className != "widget-title"){
+                childr[i].style.visibility = "hidden";
+            }
+        }
     }
 }

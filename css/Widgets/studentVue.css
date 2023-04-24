@@ -1,0 +1,124 @@
+.grades-container {
+    width: 45%;
+    height: calc(90% - 6em);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: absolute;
+    top: calc(6em + 2.5%);
+    left: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    margin-right: 5%;
+}
+
+.attendance-container {
+    width: 50%;
+    height: calc(90% - 6em);
+    position: absolute;
+    left: 48%;
+    top: calc(6em + 2.5%);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.grade-card {
+    width: 100%;
+    border-radius: 1vw;
+    padding-left: 5%;
+    position: relative;
+    background-color: #1e1e1e;
+    padding-bottom: 3vh;
+    margin-bottom: 1vh;
+    cursor: pointer;
+}
+
+.grade-card-title {
+    width: 90%;
+    font-size: 3vh;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.grade-column {
+    font-size: 2.5vh;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.grades-title {
+    font-size: 2vw;
+    position: relative;
+    margin: 0;
+    font-weight: bold;
+    margin-left: 1vw;
+    margin-bottom: 1vh;
+}
+
+.attendance-title {
+    font-size: 2vw;
+    position: relative;
+    margin: 0;
+    font-weight: bold;
+}
+
+.attendance-column {
+    font-size: 1.2vw;
+    margin-bottom: 0;
+    width: 95%;
+    border-radius: 1vw;
+    background-color: #1e1e1e;
+    padding: 0.5vw;
+    position: relative;
+    margin-top: 1vh;
+    padding-bottom: 0.2vw;
+}
+
+.attendance-column-data {
+    margin-top: 0;
+    margin-left: 2vw;
+    background-color: #1e1e1e;
+}
+
+.attendance-circle-overlay {
+    width: 75%;
+    height: 75%;
+    background-color: #1e1e1e;
+    border-radius: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.attendance-percentage {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%);
+    font-weight: bold;
+    color: white;
+    font-size: 0.8vw;
+}
+
+.attendance-circle-tardy {
+    height: 3.5vw;
+    width: 3.5vw;
+    border-radius: 100%;
+    background: linear-gradient(270deg, #7af099 50%, transparent 50%), linear-gradient(-20deg, #7af099 50%, #f0d67a 50%);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 2vw;
+}
+
+.attendance-circle-absent {
+    height: 3.5vw;
+    width: 3.5vw;
+    border-radius: 100%;
+    background: linear-gradient(270deg, #7af099 50%, transparent 50%), linear-gradient(10deg, transparent 50%, #f07a7a 50%);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 2vw;
+}
