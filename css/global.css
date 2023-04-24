@@ -67,6 +67,7 @@ body {
 
 .menu-button-container {
     width: 7vh;
+    max-width: 60px;
     position: fixed;
     left: 2vh;
     top: 3.5vh;
@@ -76,4 +77,5 @@ body {
 
 .menu-button {
     width: 7vh;
+    max-width: 60px;
 }

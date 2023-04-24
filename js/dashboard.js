@@ -136,7 +136,7 @@ function daysRemaining(date1, date2) {
 }
 
 function getTagColor() {
-    return 'red';
+    return 'pink';
 }
 
 function markReminder(reminder){
@@ -149,5 +149,18 @@ function markReminder(reminder){
         reminder.style.textDecoration = "line-through"
         reminder.style.opacity = 0.6;
         reminder.style.backgroundColor = "#B1FFD8";
+    }
+}
+
+function toggleWidgetDropdown(widget) {    
+    if (widget.parentNode.parentNode.style.height == "0vh"){
+        widget.parentNode.parentNode.style.height = "40vh";
+        widget.parentNode.parentNode.style.marginBottom = "1vh";
+        widget.style.rotate = "0deg";
+    }
+    else {
+        widget.parentNode.parentNode.style.height = "0vh";
+        widget.parentNode.parentNode.style.marginBottom = "10vh";
+        widget.style.rotate = "-90deg";
     }
 }

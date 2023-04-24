@@ -59,10 +59,11 @@
     </div>
 
     <div class="info-container">
-      <div class="class-schedule-title">
-        <p>Today's Schedule</p>
-      </div>
       <div class="class-schedule">
+        <input type="image" class="class-schedule-edit" src="Assets/Images/schedule_icon.png"></button>
+        <div class="widget-title">
+          <p>Today's Schedule</p>
+        </div>
         <div class="class-box">
           <p class="class-title"><a class="class-period">1ST</a> College Composition</p>
           <p class="class-teacher">Caity Gladstone</p>
@@ -88,11 +89,11 @@
           <p class="class-time">1:30PM - 3:00PM</p>
         </div>
       </div>
-      <div class="reminders-title">
-        <p>Reminders</p>
-        <button class="reminders-add" onclick="createNewReminder()"><img src="Assets/Images/add_icon.png">New Reminder</button>
-      </div>
       <div class="reminders" id="reminders">
+        <div class="widget-title">
+          <p>Reminders</p>
+          <button class="reminders-add" onclick="createNewReminder()"><img src="Assets/Images/add_icon.png">New Reminder</button>
+        </div>
         <div class="reminder-card">
           <div class="reminder-card-tag" style="background-color:yellowgreen">AP Government</div>
           <div class="reminder-card-tag" style="background-color:blue">Homework</div>
@@ -104,6 +105,28 @@
           <input type="image" src="Assets/Images/edit_icon.png" onclick="editReminder(this.parentNode)" class="reminder-card-edit" alt="" />
           <input type="image" src="Assets/Images/checkbox_icon.png" onclick="markReminder(this.parentNode)" class="reminder-card-check" alt="" />
           <input type="image" src="Assets/Images/trash_icon.png" onclick="return this.parentNode.remove();" class="reminder-card-trash" alt="" />
+        </div>
+      </div>
+      <div class="hacky-flex-break"></div>
+      <div class="integration-widget">
+        <div class="widget-title">
+          <img src="Assets\Images\Integrations\studentVue.png">
+          <p>StudentVue</p>
+          <input type="image" src="Assets\Images\dropdown_arrow.png" class="widget-title-dropdown" onclick="toggleWidgetDropdown(this)"/>
+        </div>
+      </div>
+      <div class="integration-widget">
+        <div class="widget-title">
+          <img src="Assets\Images\Integrations\canvas.png"">
+          <p>Canvas</p>
+          <input type="image" src="Assets\Images\dropdown_arrow.png" class="widget-title-dropdown" onclick="toggleWidgetDropdown(this)"/>
+        </div>
+      </div>
+      <div class="integration-widget">
+        <div class="widget-title">
+          <img src="Assets\Images\Integrations\ap-classroom.png"">
+          <p>AP Classroom</p>
+          <input type="image" src="Assets\Images\dropdown_arrow.png" class="widget-title-dropdown" onclick="toggleWidgetDropdown(this)"/>
         </div>
       </div>
     </div>
