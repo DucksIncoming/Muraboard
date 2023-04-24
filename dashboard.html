@@ -22,6 +22,7 @@
     <button class="nav-button" id="about">About</button>
     <button class="nav-button" id="help">Help</button>
   </nav>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -109,13 +110,14 @@
         </div>
       </div>
       <div class="hacky-flex-break"></div>
-      <div class="integration-widget">
+      <div class="integration-widget" id="studentVue-widget">
+        <script src="js/Widgets/studentVue.js"></script>
         <div class="widget-title">
           <img src="Assets\Images\Integrations\studentVue.png">
           <p>StudentVue</p>
           <input type="image" src="Assets\Images\dropdown_arrow.png" class="widget-title-dropdown" onclick="toggleWidgetDropdown(this)"/>
         </div>
-        <div class="grades-container">
+        <div class="grades-container" id="studentVue-grades-container">
           <p class="grades-title">Grades</p>
           <div class="grade-card">
             <p class="grade-card-title">College Composition</p>
@@ -139,10 +141,10 @@
             <p class="grade-column">Final Grade: 89.9%</p>
           </div>
         </div>
-        <div class="attendance-container">
+        <div class="attendance-container" id="studentVue-attendance-container">
           <p class="attendance-title">Attendance</p>
           <div class="attendance-column"> Adv Placement US Government
-            <p class="attendance-column-data"><font color="#f07a7a">8 Absences </font>, <font color="#f0d67a">3 Tardies</font>, <font color="#7af099">2 Excused</font></p>
+            <p class="attendance-column-data"><font color="#f07a7a">8 Absences</font>, <font color="#f0d67a">3 Tardies</font>, <font color="#7af099">2 Excused</font></p>
             <div class="attendance-circle-tardy" style="background: linear-gradient(270deg, #7af099 50%, transparent 50%), linear-gradient(50deg, #7af099 50%, #f0d67a 50%);"></div>
             <div class="attendance-circle-absent" style="background: linear-gradient(270deg, #7af099 50%, transparent 50%), linear-gradient(70deg, transparent 50%, #f07a7a 50%);">
               <div class="attendance-circle-overlay"></div>
@@ -150,15 +152,15 @@
             </div>
           </div>
           <div class="attendance-column"> College Composition
-            <p class="attendance-column-data"><font color="#f07a7a">25 Absences </font>, <font color="#f0d67a">7 Tardies</font>, <font color="#7af099">9 Excused</font></p>
-            <div class="attendance-circle-tardy" style="background: linear-gradient(270deg, #7af099 50%, transparent 50%), linear-gradient(-20deg, #7af099 50%, #f0d67a 50%);"></div>
+            <p class="attendance-column-data"><font color="#f07a7a">25 Absences</font>, <font color="#f0d67a">7 Tardies</font>, <font color="#7af099">9 Excused</font></p>
+            <div class="attendance-circle-tardy" style="background: linear-gradient(270deg, #7af099 50%, transparent 50%), linear-gradient(-40deg, #7af099 50%, #f0d67a 50%);"></div>
             <div class="attendance-circle-absent" style="background: linear-gradient(270deg, #7af099 50%, transparent 50%), linear-gradient(10deg, transparent 50%, #f07a7a 50%);">
               <div class="attendance-circle-overlay"></div>
               <p class="attendance-percentage">79.3%</p>
             </div>
           </div>
           <div class="attendance-column"> Adv Placement Biology
-            <p class="attendance-column-data"><font color="#f07a7a">0 Absences </font>, <font color="#f0d67a">0 Tardies</font>, <font color="#7af099">0 Excused</font></p>
+            <p class="attendance-column-data"><font color="#f07a7a">0 Absences</font>, <font color="#f0d67a">0 Tardies</font>, <font color="#7af099">0 Excused</font></p>
             <div class="attendance-circle-tardy" style="background: linear-gradient(270deg, #7af099 50%, transparent 50%), linear-gradient(89.9deg, #7af099 50%, #f0d67a 50%);"></div>
             <div class="attendance-circle-absent" style="background: linear-gradient(270deg, #7af099 50%, transparent 50%), linear-gradient(89.9deg, transparent 50%, #f07a7a 50%);">
               <div class="attendance-circle-overlay"></div>
@@ -167,14 +169,14 @@
           </div>
         </div>
       </div>
-      <div class="integration-widget">
+      <div class="integration-widget" id="canvas-widget">
         <div class="widget-title">
           <img src="Assets\Images\Integrations\canvas.png"">
           <p>Canvas</p>
           <input type="image" src="Assets\Images\dropdown_arrow.png" class="widget-title-dropdown" onclick="toggleWidgetDropdown(this)"/>
         </div>
       </div>
-      <div class="integration-widget">
+      <div class="integration-widget" id="apclassroom-widget">
         <div class="widget-title">
           <img src="Assets\Images\Integrations\ap-classroom.png"">
           <p>AP Classroom</p>
