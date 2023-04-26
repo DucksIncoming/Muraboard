@@ -161,17 +161,26 @@ function toggleWidgetDropdown(widget) {
         childr = widget.parentNode.parentNode.children
         for (let i = 0; i < childr.length; i++){
             childr[i].style.visibility = "visible";
+
+            if (childr[i].className == "widget-title"){
+                childr[i].style.borderBottomLeftRadius = "0em";
+                childr[i].style.borderBottomRightRadius = "0em"; 
+            }
         }
     }
     else {
         widget.parentNode.parentNode.style.height = "0vh";
-        widget.parentNode.parentNode.style.marginBottom = "10%";
+        widget.parentNode.parentNode.style.marginBottom = "6em";
         widget.style.rotate = "-90deg";
 
         childr = widget.parentNode.parentNode.children
         for (let i = 0; i < childr.length; i++){
             if (childr[i].className != "widget-title"){
                 childr[i].style.visibility = "hidden";
+            }
+            else {
+                childr[i].style.borderBottomLeftRadius = "0.5em";
+                childr[i].style.borderBottomRightRadius = "0.5em"; 
             }
         }
     }
