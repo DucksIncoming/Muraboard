@@ -60,6 +60,18 @@ const svData = { // For testing purposes only
             excused: "2"
         }
     },
+    4: {
+        class: "Example Class 5",
+        grades: {
+            "Final Grade": "96.0",
+        },
+        attendance: {
+            present: "50",
+            absent: "25",
+            tardy: "25",
+            excused: "10"
+        }
+    }
 };
 
 $( document ).ready(function() {
@@ -137,10 +149,17 @@ async function populateAttendance(){
             cardHTML = cardHTML.replace("[EXC#]", attendanceData.excused);
 
             let present = parseInt(attendanceData.present, 10);
-            let totalDays = present + parseInt(attendanceData.tardy, 10) + parseInt(attendanceData.absent, 10);
+            let tardies = parseInt(attendanceData.tardy, 10);
+            let absences = parseInt(attendanceData.absent, 10);
+
+            let totalDays = present + tardies + absences;
+            let absentPercentage = Math.round(100 - (absences / totalDays * 100))
+            let tardyPercentage = Math.round(100 - (tardies / totalDays * 100 + (100 - absentPercentage)))
             let percentage = Math.round(present * 1000 / totalDays) / 10
 
             cardHTML = cardHTML.replace("[PERCENTAGE]", percentage.toString())
+            cardHTML = cardHTML.replaceAll("[TAR%]", tardyPercentage);
+            cardHTML = cardHTML.replaceAll("[ABS%]", absentPercentage);
 
             attendanceContainer.innerHTML += cardHTML;
         }

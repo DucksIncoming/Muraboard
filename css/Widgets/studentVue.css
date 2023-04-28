@@ -101,11 +101,22 @@
     font-size: 0.8vw;
 }
 
+.attendance-circle-base {
+    height: 3.5vw;
+    width: 3.5vw;
+    border-radius: 100%;
+    background-color: #7af099;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 2vw;
+}
+
 .attendance-circle-tardy {
     height: 3.5vw;
     width: 3.5vw;
     border-radius: 100%;
-    background: linear-gradient(270deg, #7af099 50%, transparent 50%), linear-gradient(-20deg, #7af099 50%, #f0d67a 50%);
+    background: conic-gradient(transparent 70%, #f0d67a 70%);
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -116,7 +127,7 @@
     height: 3.5vw;
     width: 3.5vw;
     border-radius: 100%;
-    background: linear-gradient(270deg, #7af099 50%, transparent 50%), linear-gradient(10deg, transparent 50%, #f07a7a 50%);
+    background: conic-gradient(transparent 90%, #f07a7a 90%);
     position: absolute;
     top: 50%;
     transform: translateY(-50%);

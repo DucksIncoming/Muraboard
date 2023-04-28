@@ -1,7 +1,8 @@
 <div class="attendance-column" id="studentVue-attendance-[CLASSID]">[CLASSNAME]
     <p class="attendance-column-data"><font color="#f07a7a">[ABS#] Absences</font>, <font color="#f0d67a">[TAR#] Tardies</font>, <font color="#7af099">[EXC#] Excused</font></p>
-    <div class="attendance-circle-tardy" style="background: linear-gradient(270deg, #7af099 50%, transparent 50%), linear-gradient(50deg, #7af099 50%, #f0d67a 50%);"></div>
-    <div class="attendance-circle-absent" style="background: linear-gradient(270deg, #7af099 50%, transparent 50%), linear-gradient(70deg, transparent 50%, #f07a7a 50%);">
+    <div class="attendance-circle-base"></div>
+    <div class="attendance-circle-tardy" style="background: conic-gradient(transparent [TAR%]%, #f0d67a [TAR%]%)"></div>
+    <div class="attendance-circle-absent" style="background: conic-gradient(transparent [ABS%]%, #f07a7a [ABS%]%)">
       <div class="attendance-circle-overlay"></div>
       <p class="attendance-percentage">[PERCENTAGE]%</p>
     </div>
