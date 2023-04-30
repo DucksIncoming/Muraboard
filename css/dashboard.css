@@ -505,6 +505,7 @@
     width: 94%;
     height: 80vh;
     resize: vertical;
+    display: inline-block;
     position: relative;
     background-color: #383838;
     border-radius: 1em;

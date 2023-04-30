@@ -1,0 +1,137 @@
+.canvas-assignments {
+    width: calc(40% - 1vw);
+    height: calc(100% - 8em - 2vw);
+    position: absolute;
+    top: 7em;
+    left: 1vw;
+    padding: 1vw;
+    padding-top: 0px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.canvas-assignments-title-container {
+    color: white;
+    font-size: 2vw;
+    font-weight: bold;
+    margin-top: 0px;
+}
+
+.canvas-inbox-title-container {
+    color: white;
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+.canvas-assignments-title {
+    margin-top: 0;
+}
+
+.canvas-inbox-title {
+    margin-top: 0;
+}
+
+.canvas-inbox {
+    width: calc(60% - 6vw);
+    height: calc(100% - 8em - 2vw);
+    position: absolute;
+    top: 7em;
+    left: calc(3vw + 40%);
+    padding: 1vw;
+    padding-top: 0px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.canvas-assignment-card {
+    width: 90%;
+    padding: 1vw;
+    padding-top: 2vh;
+    padding-bottom: 3vh;
+    border-radius: 1vw;
+    margin-bottom: 1vh;
+    background-color: #1e1e1e;
+}
+
+.canvas-assignment-card-title {
+    font-size: 1.2vw;
+    font-weight: bold;
+    margin: 0;
+}
+
+.canvas-assignment-card-class {
+    font-size: 0.8vw;
+    font-style: italic;
+    margin: 0;
+    color: #ffcc66;
+}
+
+.canvas-assignment-card-points {
+    font-weight: bold;
+    font-size: 0.8vw;
+    margin: 0;
+}
+
+.canvas-assignment-card-date {
+    font-size: 0.9vw;
+    margin: 0;
+    color: #99ffcc;
+}
+
+.canvas-inbox-email {
+    background-color: #1e1e1e;
+    padding: 1vw;
+    height: 4vw;
+    border-radius: 1vw;
+    margin-bottom: 1vh;
+    position: relative;
+    cursor: pointer;
+}
+
+.canvas-email-date {
+    position: absolute;
+    top: 1.5vw;
+    margin: 0;
+    right: 1vw;
+    font-size: 0.8vw;
+}
+
+.canvas-email-subject {
+    font-size: 1.2vw;
+    margin: 0;
+}
+
+.canvas-email-sender {
+    display: inline-block;
+    margin: 0;
+    margin-right: 0.2em;
+    font-size: 0.8vw;
+}
+
+.canvas-email-recipient {
+    display: inline-block;
+    color: #bebebe;
+    margin: 0;
+    font-size: 0.8vw;
+}
+
+.canvas-email-category {
+    margin: 0;
+    font-style: italic;
+    font-size: 0.8vw;
+}
+
+.canvas-email-body {
+    color: white;
+    font-size: 1vw;
+    visibility: hidden;
+}
+
+.canvas-email-overflow-indicator {
+    position: absolute;
+    visibility: visible;
+    bottom: 0;
+    left: 50%;
+    font-size: 1vw;
+    transform: translateX(-50%);
+}
