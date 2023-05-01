@@ -86,20 +86,12 @@ async function fetchIntegrationData() {
     return svData;
 }
 
-function getHTML(path){
-    var res;
-
-    jQuery.get(path, function(data) {
-        data =  data.toString();
-    });
-}
-
 async function populateGrades(){
     //var svData = await fetchIntegrationData();
     let gradesContainer = document.getElementById("studentVue-grades-container");
 
-    jQuery.get("Elements/grade-card.html", function(cardHTMLData) {
-        jQuery.get("Elements/grade-column.html", function(columnHTMLData) {
+    jQuery.get("Elements/studentVue/grade-card.html", function(cardHTMLData) {
+        jQuery.get("Elements/studentVue/grade-column.html", function(columnHTMLData) {
             let dataLen = Object.keys(svData).length;
             
             for (let i = 0; i < dataLen; i++){
@@ -131,7 +123,7 @@ async function populateAttendance(){
     //var svData = await fetchIntegrationData();
     let attendanceContainer = document.getElementById("studentVue-attendance-container");
 
-    jQuery.get("Elements/attendance-column.html", function(cardHTMLData) {
+    jQuery.get("Elements/studentVue/attendance-column.html", function(cardHTMLData) {
         let dataLen = Object.keys(svData).length;
         
         for (let i = 0; i < dataLen; i++){
