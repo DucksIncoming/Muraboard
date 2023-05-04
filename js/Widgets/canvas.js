@@ -66,13 +66,14 @@ function toggleEmailVisibility(email) {
     }
 }
 
-function populateAssignments() {
+async function populateAssignments() {
+    const response = await fetch("http://localhost:3000/canvas");
+    const cnvData = await response.json();
     let assignmentData = cnvData.assignments;
     let assignmentContainer = document.getElementById("canvas-assignments");
 
     for (let i = 0; i < Object.keys(assignmentData).length; i++){
         let assignment = assignmentData[i];
-
         jQuery.get("Elements/canvas/canvas-assignment-card.html", function(data) {
             let cardData = data.toString();
 
@@ -86,12 +87,13 @@ function populateAssignments() {
     }
 }
 
-function populateInbox() {
+async function populateInbox() {
     let inboxContainer = document.getElementById("canvas-inbox")
+    const response = await fetch("http://localhost:3000/canvas");
+    const cnvData = await response.json();
+    let emailData = cnvData.inbox;
 
     jQuery.get("Elements/canvas/canvas-inbox-email.html", function(data) {
-        let emailData = cnvData.inbox;
-
         for (let i = 0; i < Object.keys(emailData).length; i++) {
             let emailHTML = data.toString();
             

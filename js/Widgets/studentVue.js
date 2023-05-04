@@ -1,6 +1,6 @@
-widget = document.getElementById("studentVue-widget");
-gradesContainer = document.getElementById("studentVue-grades-container");
-attendanceContainer = document.getElementById("studentVue-attendance-container");
+let widget = document.getElementById("studentVue-widget");
+let gradesContainer = document.getElementById("studentVue-grades-container");
+let attendanceContainer = document.getElementById("studentVue-attendance-container");
 
 const svData = { // For testing purposes only
     0: {
@@ -79,15 +79,10 @@ $( document ).ready(function() {
     populateAttendance();
 });
 
-async function fetchIntegrationData() {
-    var res = await fetch("http://localhost:3000/studentVue");
-    var svData = await res.json();
-
-    return svData;
-}
-
 async function populateGrades(){
-    //var svData = await fetchIntegrationData();
+    const response = await fetch("http://localhost:3000/studentVue");
+    const svData = await response.json();
+
     let gradesContainer = document.getElementById("studentVue-grades-container");
 
     jQuery.get("Elements/studentVue/grade-card.html", function(cardHTMLData) {
@@ -104,7 +99,7 @@ async function populateGrades(){
                 cardHTML = cardHTML.replace("[CLASSID]", classID);
                 cardHTML = cardHTML.replace("[CLASSNAME]", classTitle);
 
-                for (g in gradeData){
+                for (let g in gradeData){
                     let columnHTML = columnHTMLData.toString();
                     columnHTML = columnHTML.replace("[CATEGORY]", g);
                     columnHTML = columnHTML.replace("[SCORE]", gradeData[g]);
@@ -120,7 +115,8 @@ async function populateGrades(){
 }
 
 async function populateAttendance(){
-    //var svData = await fetchIntegrationData();
+    const response = await fetch("http://localhost:3000/studentVue");
+    const svData = await response.json();
     let attendanceContainer = document.getElementById("studentVue-attendance-container");
 
     jQuery.get("Elements/studentVue/attendance-column.html", function(cardHTMLData) {
