@@ -1,44 +1,3 @@
-const cnvData = {
-    inbox: {
-        0: {
-            subject: "Example subject",
-            sender: "Sender",
-            recipient: "Recipient",
-            category: "AP US Gov",
-            date: "April 28, 2023 at 2:43pm",
-            body: "What the scallop. what the SCALLOP! god DAMN it what the SCALLOP BRO"
-        },
-        1: {
-            subject: "Another example subject",
-            sender: "Sender2",
-            recipient: "Recipient2",
-            category: "AP Chemistry",
-            date: "May 18, 2023 at 5:12pm",
-            body: "Boy what the hell boy boy what the boy"
-        }
-    },
-    assignments: {
-        0: {
-            title: "Assignment Name 1",
-            class: "Class title",
-            points: "25",
-            duedate: "May 4 at 11pm"
-        },
-        1: {
-            title: "Assignment Name 2",
-            class: "Class title",
-            points: "50",
-            duedate: "May 21 at 11pm"
-        },
-        2: {
-            title: "Assignment Name 3",
-            class: "Class title",
-            points: "10",
-            duedate: "Jun 6 at 11pm"
-        }
-    }
-}
-
 $( document ).ready(function() {
     populateAssignments();
     populateInbox();
@@ -66,45 +25,80 @@ function toggleEmailVisibility(email) {
     }
 }
 
+function apiRefuse(widget){
+    jQuery.get("Elements/api-connection-refused.html", function(data) {
+        let apiHTML = data.toString();
+        widget.innerHTML += apiHTML;
+    });
+}
+
 async function populateAssignments() {
-    const response = await fetch("http://localhost:3000/canvas");
-    const cnvData = await response.json();
-    let assignmentData = cnvData.assignments;
     let assignmentContainer = document.getElementById("canvas-assignments");
+    var apiStatus = 0;
+    var cnvData;
 
-    for (let i = 0; i < Object.keys(assignmentData).length; i++){
-        let assignment = assignmentData[i];
-        jQuery.get("Elements/canvas/canvas-assignment-card.html", function(data) {
-            let cardData = data.toString();
+    try {
+        const response = await fetch("http://localhost:3000/canvas");
+        cnvData = await response.json();
 
-            cardData = cardData.replace("[TITLE]", assignment.title);
-            cardData = cardData.replace("[CLASS]", assignment.class);
-            cardData = cardData.replace("[POINTS]", assignment.points);
-            cardData = cardData.replace("[DATE]", assignment.duedate);
+        apiStatus = 200;
+    }
+    catch (e) {
+        apiStatus = 204;
+        apiRefuse(assignmentContainer);
+    }
 
-            assignmentContainer.innerHTML += cardData;
-        });
+    if (apiStatus == 200){
+        let assignmentData = cnvData.assignments;
+
+        for (let i = 0; i < Object.keys(assignmentData).length; i++){
+            let assignment = assignmentData[i];
+            jQuery.get("Elements/canvas/canvas-assignment-card.html", function(data) {
+                let cardData = data.toString();
+
+                cardData = cardData.replace("[TITLE]", assignment.title);
+                cardData = cardData.replace("[CLASS]", assignment.class);
+                cardData = cardData.replace("[POINTS]", assignment.points);
+                cardData = cardData.replace("[DATE]", assignment.duedate);
+
+                assignmentContainer.innerHTML += cardData;
+            });
+        }
     }
 }
 
 async function populateInbox() {
     let inboxContainer = document.getElementById("canvas-inbox")
-    const response = await fetch("http://localhost:3000/canvas");
-    const cnvData = await response.json();
-    let emailData = cnvData.inbox;
+    var apiStatus = 0;
+    var cnvData;
 
-    jQuery.get("Elements/canvas/canvas-inbox-email.html", function(data) {
-        for (let i = 0; i < Object.keys(emailData).length; i++) {
-            let emailHTML = data.toString();
-            
-            emailHTML = emailHTML.replace("[DATE]", emailData[i].date);
-            emailHTML = emailHTML.replace("[SUBJECT]", emailData[i].subject);
-            emailHTML = emailHTML.replace("[SENDER]", emailData[i].sender);
-            emailHTML = emailHTML.replace("[RECIPIENT]", emailData[i].recipient);
-            emailHTML = emailHTML.replace("[CATEGORY]", emailData[i].category);
-            emailHTML = emailHTML.replace("[BODY]", emailData[i].body);
+    try {
+        const response = await fetch("http://localhost:3000/canvas");
+        cnvData = await response.json();
 
-            inboxContainer.innerHTML += emailHTML;
-        }
-    });
+        apiStatus = 200;
+    }
+    catch (e) {
+        apiStatus = 204;
+        apiRefuse(inboxContainer);
+    }
+    
+    if (apiStatus == 200){
+        let emailData = cnvData.inbox;
+
+        jQuery.get("Elements/canvas/canvas-inbox-email.html", function(data) {
+            for (let i = 0; i < Object.keys(emailData).length; i++) {
+                let emailHTML = data.toString();
+                
+                emailHTML = emailHTML.replace("[DATE]", emailData[i].date);
+                emailHTML = emailHTML.replace("[SUBJECT]", emailData[i].subject);
+                emailHTML = emailHTML.replace("[SENDER]", emailData[i].sender);
+                emailHTML = emailHTML.replace("[RECIPIENT]", emailData[i].recipient);
+                emailHTML = emailHTML.replace("[CATEGORY]", emailData[i].category);
+                emailHTML = emailHTML.replace("[BODY]", emailData[i].body);
+
+                inboxContainer.innerHTML += emailHTML;
+            }
+        });
+    }
 }

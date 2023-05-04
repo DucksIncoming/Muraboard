@@ -2,77 +2,12 @@ let widget = document.getElementById("studentVue-widget");
 let gradesContainer = document.getElementById("studentVue-grades-container");
 let attendanceContainer = document.getElementById("studentVue-attendance-container");
 
-const svData = { // For testing purposes only
-    0: {
-        class: "Example Class 1",
-        grades: {
-            "MP4": "98.5",
-            "Exam": "0.0",
-            "Semester 2": "93.5",
-            "Final Grade": "89.5",
-        },
-        attendance: {
-            present: "140",
-            absent: "10",
-            tardy: "16",
-            excused: "3"
-        }
-    },
-    1: {
-        class: "Example Class 2",
-        grades: {
-            "MP4": "78.5",
-            "Exam": "0.0",
-            "Semester 2": "90.5",
-            "Final Grade": "85.9",
-        },
-        attendance: {
-            present: "140",
-            absent: "403",
-            tardy: "160",
-            excused: "9"
-        }
-    },
-    2: {
-        class: "Example Class 3",
-        grades: {
-            "MP4": "18.5",
-            "Exam": "0.0",
-            "Semester 2": "73.5",
-            "Final Grade": "89.5",
-        },
-        attendance: {
-            present: "100",
-            absent: "13",
-            tardy: "12",
-            excused: "0"
-        }
-    },
-    3: {
-        class: "Example Class 4",
-        grades: {
-            "Final Grade": "86.0",
-        },
-        attendance: {
-            present: "90",
-            absent: "43",
-            tardy: "10",
-            excused: "2"
-        }
-    },
-    4: {
-        class: "Example Class 5",
-        grades: {
-            "Final Grade": "96.0",
-        },
-        attendance: {
-            present: "50",
-            absent: "25",
-            tardy: "25",
-            excused: "10"
-        }
-    }
-};
+function apiRefuse(widget){
+    jQuery.get("Elements/api-connection-refused.html", function(data) {
+        let apiHTML = data.toString();
+        widget.innerHTML += apiHTML;
+    });
+}
 
 $( document ).ready(function() {
     populateGrades();
@@ -80,13 +15,73 @@ $( document ).ready(function() {
 });
 
 async function populateGrades(){
-    const response = await fetch("http://localhost:3000/studentVue");
-    const svData = await response.json();
+    var apiStatus = 0;
+    var svData;
 
-    let gradesContainer = document.getElementById("studentVue-grades-container");
+    try {
+        const response = await fetch("http://localhost:3000/studentVue");
+        svData = await response.json();
+        apiStatus = 200;
+    }
+    catch (e) {
+        apiStatus = 204;
 
-    jQuery.get("Elements/studentVue/grade-card.html", function(cardHTMLData) {
-        jQuery.get("Elements/studentVue/grade-column.html", function(columnHTMLData) {
+        let gradesContainer = document.getElementById("studentVue-grades-container");
+        apiRefuse(gradesContainer);
+    }
+    
+    if (apiStatus == 200){
+        let gradesContainer = document.getElementById("studentVue-grades-container");
+
+        jQuery.get("Elements/studentVue/grade-card.html", function(cardHTMLData) {
+            jQuery.get("Elements/studentVue/grade-column.html", function(columnHTMLData) {
+                let dataLen = Object.keys(svData).length;
+                
+                for (let i = 0; i < dataLen; i++){
+                    let cardHTML = cardHTMLData.toString();
+
+                    let classTitle = svData[i].class;
+                    let classID = classTitle.replaceAll(" ", "");
+                    let gradeData = svData[i].grades;
+
+                    cardHTML = cardHTML.replace("[CLASSID]", classID);
+                    cardHTML = cardHTML.replace("[CLASSNAME]", classTitle);
+
+                    for (let g in gradeData){
+                        let columnHTML = columnHTMLData.toString();
+                        columnHTML = columnHTML.replace("[CATEGORY]", g);
+                        columnHTML = columnHTML.replace("[SCORE]", gradeData[g]);
+
+                        cardHTML += columnHTML;
+                    }
+
+                    cardHTML += "</div>";
+                    gradesContainer.innerHTML += cardHTML;
+                }
+            });
+        });
+    }
+}
+
+async function populateAttendance(){
+    var apiStatus = 0;
+    var svData;
+    
+    try {
+        const response = await fetch("http://localhost:3000/studentVue");
+        svData = await response.json();
+        apiStatus = 200;
+    }
+    catch (e){
+        apiStatus = 204;
+
+        let attendanceContainer = document.getElementById("studentVue-attendance-container");
+        apiRefuse(attendanceContainer);
+    }
+    if (apiStatus == 200){
+        let attendanceContainer = document.getElementById("studentVue-attendance-container");
+
+        jQuery.get("Elements/studentVue/attendance-column.html", function(cardHTMLData) {
             let dataLen = Object.keys(svData).length;
             
             for (let i = 0; i < dataLen; i++){
@@ -94,62 +89,30 @@ async function populateGrades(){
 
                 let classTitle = svData[i].class;
                 let classID = classTitle.replaceAll(" ", "");
-                let gradeData = svData[i].grades;
+                let attendanceData = svData[i].attendance;
 
                 cardHTML = cardHTML.replace("[CLASSID]", classID);
                 cardHTML = cardHTML.replace("[CLASSNAME]", classTitle);
 
-                for (let g in gradeData){
-                    let columnHTML = columnHTMLData.toString();
-                    columnHTML = columnHTML.replace("[CATEGORY]", g);
-                    columnHTML = columnHTML.replace("[SCORE]", gradeData[g]);
+                cardHTML = cardHTML.replace("[ABS#]", attendanceData.absent);
+                cardHTML = cardHTML.replace("[TAR#]", attendanceData.tardy);
+                cardHTML = cardHTML.replace("[EXC#]", attendanceData.excused);
 
-                    cardHTML += columnHTML;
-                }
+                let present = parseInt(attendanceData.present, 10);
+                let tardies = parseInt(attendanceData.tardy, 10);
+                let absences = parseInt(attendanceData.absent, 10);
 
-                cardHTML += "</div>";
-                gradesContainer.innerHTML += cardHTML;
+                let totalDays = present + tardies + absences;
+                let absentPercentage = Math.round(100 - (absences / totalDays * 100))
+                let tardyPercentage = Math.round(100 - (tardies / totalDays * 100 + (100 - absentPercentage)))
+                let percentage = Math.round(present * 1000 / totalDays) / 10
+
+                cardHTML = cardHTML.replace("[PERCENTAGE]", percentage.toString())
+                cardHTML = cardHTML.replaceAll("[TAR%]", tardyPercentage);
+                cardHTML = cardHTML.replaceAll("[ABS%]", absentPercentage);
+
+                attendanceContainer.innerHTML += cardHTML;
             }
         });
-    });
-}
-
-async function populateAttendance(){
-    const response = await fetch("http://localhost:3000/studentVue");
-    const svData = await response.json();
-    let attendanceContainer = document.getElementById("studentVue-attendance-container");
-
-    jQuery.get("Elements/studentVue/attendance-column.html", function(cardHTMLData) {
-        let dataLen = Object.keys(svData).length;
-        
-        for (let i = 0; i < dataLen; i++){
-            let cardHTML = cardHTMLData.toString();
-
-            let classTitle = svData[i].class;
-            let classID = classTitle.replaceAll(" ", "");
-            let attendanceData = svData[i].attendance;
-
-            cardHTML = cardHTML.replace("[CLASSID]", classID);
-            cardHTML = cardHTML.replace("[CLASSNAME]", classTitle);
-
-            cardHTML = cardHTML.replace("[ABS#]", attendanceData.absent);
-            cardHTML = cardHTML.replace("[TAR#]", attendanceData.tardy);
-            cardHTML = cardHTML.replace("[EXC#]", attendanceData.excused);
-
-            let present = parseInt(attendanceData.present, 10);
-            let tardies = parseInt(attendanceData.tardy, 10);
-            let absences = parseInt(attendanceData.absent, 10);
-
-            let totalDays = present + tardies + absences;
-            let absentPercentage = Math.round(100 - (absences / totalDays * 100))
-            let tardyPercentage = Math.round(100 - (tardies / totalDays * 100 + (100 - absentPercentage)))
-            let percentage = Math.round(present * 1000 / totalDays) / 10
-
-            cardHTML = cardHTML.replace("[PERCENTAGE]", percentage.toString())
-            cardHTML = cardHTML.replaceAll("[TAR%]", tardyPercentage);
-            cardHTML = cardHTML.replaceAll("[ABS%]", absentPercentage);
-
-            attendanceContainer.innerHTML += cardHTML;
-        }
-    });
+    }
 }
