@@ -1,0 +1,13 @@
+{
+    "name": "muraboard-server",
+    "version": "1.0.0",
+    "description": "Backend API server for Muraboard integrations.",
+    "main": "server.js",
+    "author": "DucksIncoming",
+    "license": "MIT License",
+    "dependencies": {
+        "express": "^4.18.2",
+        "cheerio": "^1.0.0-rc.12",
+        "axios": "^1.4.0"
+    }
+}

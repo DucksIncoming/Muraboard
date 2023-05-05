@@ -1,5 +1,7 @@
 const express = require('express');
-const bodyParser = require("body-parser");
+const axios = require('axios');
+const cheerio = require('cheerio');
+
 const app = express();
 const port = 3000;
 
@@ -55,6 +57,7 @@ app.get('/canvas', async (req, res) => {
 });
 
 app.get('/studentVue', async (req, res) => {
+    /* 
     const svData = [
         {class: "College Composition", grades: {"MP4": "87.5", "Exam 2": "0.0", "Semester 2": "91.5", "Final Grade": "94.4"}, attendance: {present: "145", tardy: "7", absent: "25", excused: "9"}},
         {class: "AP US Government", grades: {"MP4": "91.3", "Exam 2": "0.0", "Semester 2": "93.8", "Final Grade": "95.2"}, attendance: {present: "79", tardy: "1", absent: "8", excused: "3"}},
@@ -65,6 +68,17 @@ app.get('/studentVue', async (req, res) => {
     ];
 
     res.send(svData);
+    */
+    let svPrefix = "va-chesterfield-psv"
+    let url = "https://" + svPrefix + ".edupoint.com/PXP2_Login_Student.aspx?regenerateSessionId=True";
+
+    axios(url).then(response => {
+        let html = response.data;
+        const $ = cheerio.load(html);
+
+        console.log(html);
+        return html;
+    });
 });
 
 app.post('/studentVue', async (req, res) => {
